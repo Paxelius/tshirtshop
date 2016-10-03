@@ -1,0 +1,52 @@
+<p class="My-Text">
+    <img ng-src="img/shirts/{{product.pco}}.png" alt="{{product.name}}" height="555" width="555" />
+    {{product.name}}: {{product.description}}<br />
+</p>
+<ul class="Shirt_Descr">
+    <li>One size fits all!</li>
+	<li>All Shirts are unisex design</li>
+    <li>Made of the best quality 100% cotton</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8">
+
+            <!-- product info -->
+            <table class="table table-bordered">
+
+                <tr class="well">
+                    <td class="MyRight1" colspan="3" >
+                        <a href="#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                            <i class="icon-shopping-cart" />
+                            <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+                            <span ng-show="cart.getTotalCount(product.pco) > 0"><br />This product is in the cart</span>
+                        </a>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+        <!-- buttons -->
+        <div class="span4">
+            <button
+                class="btn btn-block btn-success"
+                ng-click="cart.addItem(product.pco, product.name, product.price, 1)">
+                <i class="icon-shopping-cart icon-white" /> Add to cart
+            </button>
+            <button
+                class="btn btn-block btn-danger"
+                ng-click="cart.addItem(product.pco, product.name, product.price, -10000)"
+                ng-disabled="cart.getTotalCount(product.pco) < 1">
+                <i class="icon-trash icon-white" /> Remove from cart
+            </button>
+            <button
+                class="btn btn-block"
+                onclick="window.location.href=''">
+                <i class="icon-chevron-left" /> Back to store
+            </button>
+        </div>
+    </div>
+</div>
+

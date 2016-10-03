@@ -1,0 +1,43 @@
+<p class="My-Text">
+    Welcome to Robinly T-Shirt Shop, for helpful instructions click <a href="#/instr">HERE</a>.
+    <br />
+    Please enjoy your stay and browse our selection of wonderful T-shirts.
+</p><br>
+
+<table class="table table-hover table-bordered">
+    <tr class="well">
+    <th class="my_item3">Product</th>
+    <th class="my_item1">Description</th>
+    <th class="my_item"><b>Price</b></th>
+        <td class="MyRight" colspan="4" >
+            <p class="text"><b>Put in Cart</b></p>
+        </td>
+    </tr>
+    <tr ng-repeat="product in store.shirts | orderBy:'name' | filter:search" >
+        <td class="MyCenter"><img ng-src="img/shirts/{{product.pco}}.png" alt="{{product.name}}" height="100" width="100" /></td>
+        <td class="MyCenter">
+            <a href="#/shirts/{{product.pco}}"><b>{{product.name}}</b></a><br />
+            {{product.description}}
+        </td>
+        <td class="MyRight">
+            {{product.price | currency}}
+        </td>
+        <td class="MyCenter">
+            <button
+                class="btn btn-block btn-success"
+                ng-click="cart.addItem(product.pco, product.name, product.price, 1)">
+                [Add to Cart]
+            </button>
+ 
+            </a>
+        </td>
+    </tr>
+    <tr class="well">
+        <td class="MyRight2" colspan="4">
+            <a href="#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                <i class="icon-shopping-cart" />
+                <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+            </a>
+        </td>
+    </tr>
+</table>
